@@ -1,26 +1,247 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>reel-critic-picks-hub</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>Reel Critic Picks</title>
+    <meta name="description" content="The ultimate destination for movie reviews and ratings" />
+    <meta name="author" content="Reel Critic Picks" />
 
-    <meta property="og:title" content="reel-critic-picks-hub" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="Reel Critic Picks" />
+    <meta property="og:description" content="Discover and filter the best movie reviews" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/styles.css">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'movie-primary': '#9b87f5',
+              'movie-secondary': '#7E69AB',
+              'movie-dark': '#1A1F2C',
+              'movie-gold': '#FFC107',
+            },
+            fontFamily: {
+              'poppins': ['Poppins', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
   </head>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-movie-dark text-white font-poppins">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 border-b border-gray-800 bg-movie-dark/95 backdrop-blur-sm">
+      <div class="container mx-auto d-flex justify-content-between align-items-center py-3">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fas fa-film text-movie-primary fa-2x"></i>
+          <h1 class="text-xl font-bold m-0">Reel Critic Picks</h1>
+        </div>
+        
+        <div class="d-none d-md-block w-25">
+          <input
+            type="search"
+            placeholder="Search movies..."
+            class="form-control bg-gray-800 border-gray-700 text-white"
+          />
+        </div>
+        
+        <nav>
+          <ul class="d-flex align-items-center gap-4 list-unstyled m-0">
+            <li class="d-none d-md-block">
+              <a href="#" class="text-white text-decoration-none">Home</a>
+            </li>
+            <li class="d-none d-md-block">
+              <a href="#" class="text-white text-decoration-none">Top Rated</a>
+            </li>
+            <li class="d-none d-md-block">
+              <a href="#" class="text-white text-decoration-none">New Releases</a>
+            </li>
+            <li>
+              <button class="btn bg-movie-primary text-white hover:bg-movie-secondary">
+                Sign In
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative hero-section" style="height: 500px;">
+      <div id="heroBackdrop" class="absolute inset-0 bg-cover bg-center transition-opacity duration-700" style="opacity: 0.3;"></div>
+      
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-movie-dark via-movie-dark/90 to-movie-dark/40"></div>
+      
+      <!-- Content -->
+      <div class="container relative z-10 h-full mx-auto d-flex flex-column justify-content-center px-4">
+        <div class="max-w-2xl animate-fade-in" id="heroContent">
+          <!-- Hero content will be inserted here by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Navigation buttons -->
+      <div class="absolute bottom-8 right-8 z-10 d-flex align-items-center gap-2">
+        <button
+          class="btn btn-outline-secondary rounded-circle bg-black/40 hover:bg-black/60"
+          id="prevHeroBtn"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button
+          class="btn btn-outline-secondary rounded-circle bg-black/40 hover:bg-black/60"
+          id="nextHeroBtn"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <!-- Indicators -->
+      <div class="absolute bottom-8 left-1/2 z-10 d-flex -translate-x-1/2 align-items-center gap-1" id="heroIndicators">
+        <!-- Indicators will be inserted here by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="bg-movie-dark py-6">
+      <div class="container mx-auto px-4">
+        <div class="mb-4">
+          <h3 class="mb-3 text-lg font-medium">Filter by Category</h3>
+          <div class="d-flex flex-wrap gap-2" id="categoryFilter">
+            <!-- Category filters will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="mb-3 text-lg font-medium">Filter by Genre</h3>
+          <div class="d-flex flex-wrap gap-2" id="genreFilter">
+            <!-- Genre filters will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <div>
+          <h3 class="mb-3 text-lg font-medium">Filter by Rating</h3>
+          <div class="d-flex flex-wrap gap-2" id="ratingFilter">
+            <!-- Rating filters will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section class="py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="mb-2 text-3xl font-bold" id="movieSectionTitle">All Movies</h2>
+        <p class="mb-8 text-gray-400" id="movieSectionSubtitle">
+          Found movies matching your criteria
+        </p>
+        
+        <div class="row g-4" id="moviesGrid">
+          <!-- Movies will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="py-12 bg-gradient-to-b from-transparent to-movie-dark/50">
+      <div class="container mx-auto px-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2 class="mb-2 text-3xl font-bold">Critics' Reviews</h2>
+            <p class="mb-0 text-gray-400">What the experts are saying about these films</p>
+          </div>
+          <button id="addReviewBtn" class="btn bg-movie-primary text-white hover:bg-movie-secondary">
+            <i class="fas fa-plus me-2"></i> Add Review
+          </button>
+        </div>
+        
+        <!-- Add Review Form -->
+        <div class="card bg-movie-dark border-gray-800 mb-4 d-none" id="reviewForm">
+          <div class="card-body">
+            <h3 class="card-title mb-3">Share Your Review</h3>
+            <form id="newReviewForm">
+              <div class="mb-3">
+                <label for="reviewAuthor" class="form-label">Your Name</label>
+                <input type="text" class="form-control bg-gray-800 text-white border-gray-700" id="reviewAuthor" placeholder="Enter your name" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Your Rating</label>
+                <div id="reviewRatingStars" class="d-flex align-items-center"></div>
+              </div>
+              <div class="mb-3">
+                <label for="reviewContent" class="form-label">Your Review</label>
+                <textarea class="form-control bg-gray-800 text-white border-gray-700" id="reviewContent" rows="3" placeholder="Write your review here..." required></textarea>
+              </div>
+              <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-secondary" id="cancelReviewBtn">Cancel</button>
+                <button type="submit" class="btn bg-movie-primary text-white">Submit Review</button>
+              </div>
+              <div id="formError" class="text-danger mt-2"></div>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Reviews Grid -->
+        <div class="row g-4" id="reviewsGrid">
+          <!-- Reviews will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-movie-dark py-8">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2025 Reel Critic Picks. All rights reserved.</p>
+        <p class="mt-2 text-sm">The ultimate destination for movie reviews and ratings</p>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-movie-primary text-white">
+          <strong class="me-auto">Notification</strong>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body bg-dark text-white" id="toastMessage">
+          Review submitted successfully!
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="src/data.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>

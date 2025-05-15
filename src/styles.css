@@ -1,0 +1,252 @@
+
+:root {
+  --movie-primary: #9b87f5;
+  --movie-secondary: #7E69AB;
+  --movie-dark: #1A1F2C;
+  --movie-gold: #FFC107;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--movie-dark);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
+/* Movie Cards */
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: var(--movie-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 380px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  padding: 1rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-year {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.genre-tag {
+  background-color: rgba(128, 128, 128, 0.7);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.category-tag {
+  background-color: var(--movie-primary);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Star Rating */
+.stars-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.star-icon {
+  color: #cccccc;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star-gold {
+  color: var(--movie-gold);
+}
+
+.star-filled {
+  color: var(--movie-gold);
+}
+
+.star-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Filter Buttons */
+.filter-btn {
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background-color: var(--movie-primary);
+  color: white;
+}
+
+/* Review Cards */
+.review-card {
+  background-color: var(--movie-dark);
+  border: 1px solid #2d2d3a;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+  animation: scaleIn 0.2s ease-out;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content h1 {
+  font-weight: 700;
+}
+
+/* Navigation buttons */
+.hero-nav-btn {
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.hero-nav-btn:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+
+.hero-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-indicator.active {
+  background-color: var(--movie-primary);
+}
+
+/* Form styling */
+.form-control {
+  background-color: #2d2d3a;
+  border: 1px solid #3a3a4a;
+  color: white;
+}
+
+.form-control:focus {
+  background-color: #2d2d3a;
+  border-color: var(--movie-primary);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgba(155, 135, 245, 0.25);
+}
+
+/* Toast notification */
+.custom-toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--movie-primary);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 350px !important;
+  }
+}
