@@ -1,5 +1,5 @@
 
-import { Film } from "lucide-react";
+import { Clapperboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -8,8 +8,8 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 border-b border-gray-800 bg-movie-dark/95 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Film className="h-8 w-8 text-movie-primary" />
-          <h1 className="text-xl font-bold">Reel Critic Picks</h1>
+          <Clapperboard className="h-8 w-8 text-movie-primary animate-pulse" />
+          <h1 className="text-xl font-bold">MovieTime</h1>
         </div>
         
         <div className="hidden md:flex md:w-1/3">
